@@ -22,8 +22,19 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
+  
+  build:   
+    environment:
+      name: github-demo
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: build
+        run: echo building images
+
+  deploy:   
     environment:
       name: github-demo
 #      url: ${{ steps.deployment.outputs.page_url }}
